@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Restaurant Info</title>
 </head>
 <body>
-    Update REstaurant
+    <h3>Update Restaurant Info</h3>
+    <form action="{% url 'update_restaurant' restaurant.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Restaurant Name" value="{{restaurant.name}}" required />
+        <br>
+        <br>
+        <input type="text" name="picture" placeholder="Picture URL" value="{{restaurant.picture}}" />
+        <br>
+        <br>
+        <input type="text" name="cuisine" placeholder="Cuisine" value="{{restaurant.cuisine}}" required />
+        <br>
+        <br>
+        <input type="number" name="rating" placeholder="Rating" min="0" max="5" step="0.5" value="{{restaurant.rating}}" required />
+        <br>
+        <br>
+        <input type="submit" value="Update Restaurant " />
+      </form>
 </body>
 </html>
